@@ -1,18 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2p4evu1oa0df"]
+[gd_scene load_steps=7 format=3 uid="uid://d2p4evu1oa0df"]
 
 [ext_resource type="Texture2D" uid="uid://dk8tx4y0bi0ed" path="res://assets/bricks_demo_sprites_-_all_sprites.png" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://c60udr4tnahgd" path="res://ball.gd" id="2_0xm2m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0xm2m"]
 atlas = ExtResource("1_ig7tw")
-region = Rect2(191.009, 54.9272, 79.983, 15.0714)
+region = Rect2(191, 54.9272, 79.9919, 15.0714)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
+size = Vector2(78, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ig7tw"]
+atlas = ExtResource("1_ig7tw")
+region = Rect2(148, 161, 11, 11)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0xm2m"]
+radius = 6.0
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Bat" type="AnimatableBody2D" parent="."]
+position = Vector2(565, 606)
 
 [node name="BatSprite" type="Sprite2D" parent="Bat"]
 texture = SubResource("AtlasTexture_0xm2m")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bat"]
+shape = SubResource("RectangleShape2D_ig7tw")
+
 [node name="Ball" type="AnimatableBody2D" parent="."]
+position = Vector2(561, 459)
+script = ExtResource("2_0xm2m")
 
 [node name="BallSprite" type="Sprite2D" parent="Ball"]
+texture = SubResource("AtlasTexture_ig7tw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource("CircleShape2D_0xm2m")
