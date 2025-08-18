@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2p4evu1oa0df"]
+[gd_scene load_steps=9 format=3 uid="uid://d2p4evu1oa0df"]
 
 [ext_resource type="Texture2D" uid="uid://dk8tx4y0bi0ed" path="res://assets/bricks_demo_sprites_-_all_sprites.png" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://c60udr4tnahgd" path="res://ball.gd" id="2_0xm2m"]
@@ -17,10 +17,16 @@ region = Rect2(148, 161, 11, 11)
 [sub_resource type="CircleShape2D" id="CircleShape2D_0xm2m"]
 radius = 6.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
+size = Vector2(20, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
+size = Vector2(1154, 20)
+
 [node name="Node2D" type="Node2D"]
 
-[node name="Bat" type="AnimatableBody2D" parent="."]
-position = Vector2(565, 606)
+[node name="Bat" type="AnimatableBody2D" parent="." groups=["Bat"]]
+position = Vector2(576, 619)
 
 [node name="BatSprite" type="Sprite2D" parent="Bat"]
 texture = SubResource("AtlasTexture_0xm2m")
@@ -28,7 +34,7 @@ texture = SubResource("AtlasTexture_0xm2m")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bat"]
 shape = SubResource("RectangleShape2D_ig7tw")
 
-[node name="Ball" type="AnimatableBody2D" parent="."]
+[node name="Ball" type="AnimatableBody2D" parent="." groups=["Ball"]]
 position = Vector2(561, 459)
 script = ExtResource("2_0xm2m")
 
@@ -37,3 +43,32 @@ texture = SubResource("AtlasTexture_ig7tw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
 shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="BoundaryWalls" type="Node2D" parent="."]
+
+[node name="ScreenLeft" type="Area2D" parent="BoundaryWalls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundaryWalls/ScreenLeft"]
+position = Vector2(-10, 324)
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="ScreenRight" type="Area2D" parent="BoundaryWalls"]
+position = Vector2(1172, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundaryWalls/ScreenRight"]
+position = Vector2(-10, 324)
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="ScreenBottom" type="Area2D" parent="BoundaryWalls"]
+position = Vector2(1152, 648)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundaryWalls/ScreenBottom"]
+position = Vector2(-575, 10)
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="ScreenTop" type="Area2D" parent="BoundaryWalls"]
+position = Vector2(1152, -20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundaryWalls/ScreenTop"]
+position = Vector2(-566, 9)
+shape = SubResource("RectangleShape2D_h2yge")
