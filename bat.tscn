@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://brdaknxlvvasr"]
+
+[ext_resource type="Script" uid="uid://blf0r3m0o6xrj" path="res://bat.gd" id="1_tofr1"]
+[ext_resource type="Texture2D" uid="uid://dk8tx4y0bi0ed" path="res://assets/bricks_demo_sprites_-_all_sprites.png" id="2_vobq3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xm2m"]
+atlas = ExtResource("2_vobq3")
+region = Rect2(191, 54.9272, 79.9919, 15.0714)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+size = Vector2(14, 78)
+
+[node name="Bat" type="AnimatableBody2D" groups=["Bat"]]
+sync_to_physics = false
+script = ExtResource("1_tofr1")
+
+[node name="BatSprite" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_0xm2m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_1bvp3")

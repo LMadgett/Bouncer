@@ -1,17 +1,21 @@
 extends AnimatableBody2D
 
+var direction: Vector2
 var speed: float
-var direction: float
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	speed = 100.0
-	direction = 27
+	speed = 500
+	direction = Vector2(50.0, 70.0).normalized()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
 func _physics_process(delta):
-	var move: Vector2 = Vector2(speed * delta * cos(deg_to_rad(direction)), speed * delta * sin(deg_to_rad(direction)))
-	global_position += move
+	var collision_info = move_and_collide(speed * direction * delta)
+	while collision_info:
+		var movement_remaining := collision_info.get_remainder()
+		var remaining_length = movement_remaining.length()
+		direction = direction.bounce(collision_info.get_normal())
+		collision_info = move_and_collide(direction * remaining_length)

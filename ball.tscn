@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bf6nhj52p0c4x"]
+
+[ext_resource type="Script" uid="uid://c60udr4tnahgd" path="res://ball.gd" id="1_41u45"]
+[ext_resource type="Texture2D" uid="uid://dk8tx4y0bi0ed" path="res://assets/bricks_demo_sprites_-_all_sprites.png" id="2_ktgx5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ig7tw"]
+atlas = ExtResource("2_ktgx5")
+region = Rect2(148, 161, 11, 11)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0xm2m"]
+radius = 6.0
+
+[node name="Ball" type="AnimatableBody2D" groups=["Ball"]]
+sync_to_physics = false
+script = ExtResource("1_41u45")
+
+[node name="BallSprite" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_ig7tw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0xm2m")

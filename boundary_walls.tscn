@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://c48efkbaa7jgh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
+size = Vector2(20, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
+size = Vector2(1152, 20)
+
+[node name="BoundaryWalls" type="Node2D"]
+
+[node name="ScreenLeft" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenLeft"]
+position = Vector2(-10, 324)
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="ScreenRight" type="StaticBody2D" parent="."]
+position = Vector2(1172, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenRight"]
+position = Vector2(-10, 324)
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="ScreenBottom" type="StaticBody2D" parent="."]
+position = Vector2(1152, 648)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenBottom"]
+position = Vector2(-576, 10)
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="ScreenTop" type="StaticBody2D" parent="."]
+position = Vector2(1152, -20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenTop"]
+position = Vector2(-576, 10)
+shape = SubResource("RectangleShape2D_h2yge")

@@ -1,74 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://d2p4evu1oa0df"]
+[gd_scene load_steps=4 format=3 uid="uid://d2p4evu1oa0df"]
 
-[ext_resource type="Texture2D" uid="uid://dk8tx4y0bi0ed" path="res://assets/bricks_demo_sprites_-_all_sprites.png" id="1_ig7tw"]
-[ext_resource type="Script" uid="uid://c60udr4tnahgd" path="res://ball.gd" id="2_0xm2m"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0xm2m"]
-atlas = ExtResource("1_ig7tw")
-region = Rect2(191, 54.9272, 79.9919, 15.0714)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
-size = Vector2(78, 14)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ig7tw"]
-atlas = ExtResource("1_ig7tw")
-region = Rect2(148, 161, 11, 11)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_0xm2m"]
-radius = 6.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
-size = Vector2(20, 648)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
-size = Vector2(1154, 20)
+[ext_resource type="PackedScene" uid="uid://brdaknxlvvasr" path="res://bat.tscn" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://bf6nhj52p0c4x" path="res://ball.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://c48efkbaa7jgh" path="res://boundary_walls.tscn" id="3_h2yge"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Bat" type="AnimatableBody2D" parent="." groups=["Bat"]]
+[node name="Bat" parent="." instance=ExtResource("1_0xm2m")]
 position = Vector2(576, 619)
 
-[node name="BatSprite" type="Sprite2D" parent="Bat"]
-texture = SubResource("AtlasTexture_0xm2m")
+[node name="Ball" parent="." instance=ExtResource("2_h2yge")]
+position = Vector2(576, 507)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bat"]
-shape = SubResource("RectangleShape2D_ig7tw")
-
-[node name="Ball" type="AnimatableBody2D" parent="." groups=["Ball"]]
-position = Vector2(561, 459)
-script = ExtResource("2_0xm2m")
-
-[node name="BallSprite" type="Sprite2D" parent="Ball"]
-texture = SubResource("AtlasTexture_ig7tw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
-shape = SubResource("CircleShape2D_0xm2m")
-
-[node name="BoundaryWalls" type="Node2D" parent="."]
-
-[node name="ScreenLeft" type="Area2D" parent="BoundaryWalls"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundaryWalls/ScreenLeft"]
-position = Vector2(-10, 324)
-shape = SubResource("RectangleShape2D_0xm2m")
-
-[node name="ScreenRight" type="Area2D" parent="BoundaryWalls"]
-position = Vector2(1172, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundaryWalls/ScreenRight"]
-position = Vector2(-10, 324)
-shape = SubResource("RectangleShape2D_0xm2m")
-
-[node name="ScreenBottom" type="Area2D" parent="BoundaryWalls"]
-position = Vector2(1152, 648)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundaryWalls/ScreenBottom"]
-position = Vector2(-575, 10)
-shape = SubResource("RectangleShape2D_h2yge")
-
-[node name="ScreenTop" type="Area2D" parent="BoundaryWalls"]
-position = Vector2(1152, -20)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundaryWalls/ScreenTop"]
-position = Vector2(-566, 9)
-shape = SubResource("RectangleShape2D_h2yge")
+[node name="BoundaryWalls" parent="." instance=ExtResource("3_h2yge")]
