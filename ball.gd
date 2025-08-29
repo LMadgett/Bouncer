@@ -50,7 +50,6 @@ func _physics_process(delta):
 				fixed_to_bat = true
 				timer.start()
 				speed = 0
-				global_position = Vector2(bat.position.x, bat.position.y - 25)
 		if not reset:
 			var movement_remaining := collision_info.get_remainder()
 			var remaining_length = movement_remaining.length()
