@@ -24,6 +24,12 @@ project/assembly_name="Bouncer"
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
+[global_group]
+
+Brick=""
+Bat=""
+Ball=""
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

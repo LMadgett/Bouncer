@@ -1,8 +1,7 @@
 extends AnimatableBody2D
 
 var movement: float = 0.0
-@export
-var movement_scale: float = 75.0
+@export var movement_scale: float = 75.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
