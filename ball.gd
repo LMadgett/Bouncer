@@ -37,6 +37,8 @@ func _physics_process(delta):
 	while collision_info:
 		var other_object = collision_info.get_collider()
 		if other_object.is_in_group("Brick"):
+			if other_object.get_health() == 1:
+				bat.update_points(other_object.get_points())
 			other_object.ball_hit()
 		elif other_object.is_in_group("ScreenBottom"):
 			bat.die()

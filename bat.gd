@@ -4,13 +4,16 @@ var movement: float = 0.0
 @export var movement_scale: float = 75.0
 @export var health: int = 3
 @export var health_label: Label
+@export var points_label: Label
 var start_position
+var points: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	start_position = global_position
 	health_label.text = "Health: " + str(health)
+	points_label.text = "Points: " + str(points)
 
 func _input(event):
 	if event.is_action("ui_cancel"):
@@ -28,6 +31,10 @@ func _physics_process(delta):
 	var move: Vector2 = Vector2(movement * delta * movement_scale, 0)
 	var collision_info = move_and_collide(move)
 	movement = 0.0
+	
+func update_points(value: int):
+	points += value
+	points_label.text = "Points: " + str(points)
 
 func die():
 	health -= 1

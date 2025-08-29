@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwbvtba5kvogp"]
+[gd_scene load_steps=8 format=3 uid="uid://bwbvtba5kvogp"]
 
 [ext_resource type="Script" uid="uid://dvl5y4glxun16" path="res://brick.gd" id="1_5p85m"]
 [ext_resource type="Texture2D" uid="uid://dk8tx4y0bi0ed" path="res://assets/bricks_demo_sprites_-_all_sprites.png" id="1_awxk8"]
@@ -10,12 +10,37 @@ size = Vector2(40, 20)
 atlas = ExtResource("1_awxk8")
 region = Rect2(141, 78, 40, 20)
 
-[node name="Brick" type="StaticBody2D" groups=["Brick"]]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5p85m"]
+atlas = ExtResource("1_awxk8")
+region = Rect2(141, 55, 40, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mt0q5"]
+atlas = ExtResource("1_awxk8")
+region = Rect2(141, 101, 40, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llic7"]
+atlas = ExtResource("1_awxk8")
+region = Rect2(141, 124, 40, 20)
+
+[node name="Brick" type="StaticBody2D" node_paths=PackedStringArray("RedBrickSprite", "GreyBrickSprite", "GreenBrickSpriteUndamaged", "GreenBrickSpriteDamaged") groups=["Brick"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_5p85m")
+RedBrickSprite = NodePath("RedBrickSprite")
+GreyBrickSprite = NodePath("GreyBrickSprite")
+GreenBrickSpriteUndamaged = NodePath("GreenBrickSpriteUndamaged")
+GreenBrickSpriteDamaged = NodePath("GreenBrickSpriteDamaged2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Brick"]]
 shape = SubResource("RectangleShape2D_h2yge")
 
-[node name="BrickSprite" type="Sprite2D" parent="."]
+[node name="RedBrickSprite" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_lquwl")
+
+[node name="GreyBrickSprite" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_5p85m")
+
+[node name="GreenBrickSpriteUndamaged" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_mt0q5")
+
+[node name="GreenBrickSpriteDamaged2" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_llic7")

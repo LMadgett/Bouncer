@@ -7,10 +7,11 @@
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Bat" parent="." node_paths=PackedStringArray("health_label") instance=ExtResource("1_0xm2m")]
+[node name="Bat" parent="." node_paths=PackedStringArray("health_label", "points_label") instance=ExtResource("1_0xm2m")]
 position = Vector2(580, 620)
 scale = Vector2(2, 2)
 health_label = NodePath("../Health")
+points_label = NodePath("../Points")
 
 [node name="Ball" parent="." node_paths=PackedStringArray("bat") instance=ExtResource("2_h2yge")]
 position = Vector2(580, 380)
@@ -19,26 +20,72 @@ bat = NodePath("../Bat")
 
 [node name="BoundaryWalls" parent="." instance=ExtResource("3_h2yge")]
 
-[node name="Brick" parent="." instance=ExtResource("4_1bvp3")]
-position = Vector2(380, 240)
-
-[node name="Brick2" parent="." instance=ExtResource("4_1bvp3")]
-position = Vector2(460, 240)
-
-[node name="Brick3" parent="." instance=ExtResource("4_1bvp3")]
-position = Vector2(540, 240)
-
-[node name="Brick4" parent="." instance=ExtResource("4_1bvp3")]
-position = Vector2(620, 240)
-
-[node name="Brick5" parent="." instance=ExtResource("4_1bvp3")]
-position = Vector2(700, 240)
-
-[node name="Brick6" parent="." instance=ExtResource("4_1bvp3")]
-position = Vector2(780, 240)
-
 [node name="Health" type="Label" parent="."]
 offset_left = 20.0
 offset_top = 10.0
 offset_right = 120.0
 offset_bottom = 33.0
+
+[node name="Points" type="Label" parent="."]
+offset_left = 1040.0
+offset_top = 10.0
+offset_right = 1140.0
+offset_bottom = 33.0
+
+[node name="Bricks" type="Node2D" parent="."]
+
+[node name="Brick" parent="Bricks" instance=ExtResource("4_1bvp3")]
+position = Vector2(60, 220)
+health = 1
+
+[node name="Brick2" parent="Bricks" instance=ExtResource("4_1bvp3")]
+position = Vector2(140, 220)
+health = 2
+
+[node name="Brick3" parent="Bricks" instance=ExtResource("4_1bvp3")]
+position = Vector2(220, 220)
+health = 3
+
+[node name="Brick4" parent="Bricks" instance=ExtResource("4_1bvp3")]
+position = Vector2(300, 220)
+health = 1
+
+[node name="Brick5" parent="Bricks" instance=ExtResource("4_1bvp3")]
+position = Vector2(380, 220)
+health = 2
+
+[node name="Brick6" parent="Bricks" instance=ExtResource("4_1bvp3")]
+position = Vector2(460, 220)
+health = 3
+
+[node name="Brick7" parent="Bricks" instance=ExtResource("4_1bvp3")]
+position = Vector2(540, 220)
+health = 1
+
+[node name="Brick8" parent="Bricks" instance=ExtResource("4_1bvp3")]
+position = Vector2(620, 220)
+health = 2
+
+[node name="Brick9" parent="Bricks" instance=ExtResource("4_1bvp3")]
+position = Vector2(700, 220)
+health = 3
+
+[node name="Brick10" parent="Bricks" instance=ExtResource("4_1bvp3")]
+position = Vector2(780, 220)
+health = 1
+
+[node name="Brick11" parent="Bricks" instance=ExtResource("4_1bvp3")]
+position = Vector2(860, 220)
+health = 2
+
+[node name="Brick12" parent="Bricks" instance=ExtResource("4_1bvp3")]
+position = Vector2(940, 220)
+health = 3
+
+[node name="Brick13" parent="Bricks" instance=ExtResource("4_1bvp3")]
+position = Vector2(1020, 220)
+health = 1
+
+[node name="Brick14" parent="Bricks" instance=ExtResource("4_1bvp3")]
+position = Vector2(1100, 220)
+health = 2
