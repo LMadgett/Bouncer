@@ -21,7 +21,7 @@ position = Vector2(1172, 0)
 position = Vector2(-10, 324)
 shape = SubResource("RectangleShape2D_0xm2m")
 
-[node name="ScreenBottom" type="StaticBody2D" parent="."]
+[node name="ScreenBottom" type="StaticBody2D" parent="." groups=["ScreenBottom"]]
 position = Vector2(1152, 648)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenBottom"]
